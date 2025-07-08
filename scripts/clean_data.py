@@ -19,5 +19,5 @@ df['ingestion_date'] = pd.Timestamp.now()
 # Save cleaned data
 df.to_csv("data/air_quality_cleaned.csv", index=False)
 
-print("✅ Cleaned data saved to: data/air_quality_cleaned.csv")
+print("Cleaned data saved to: data/air_quality_cleaned.csv")
 
