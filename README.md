@@ -7,12 +7,6 @@
 The goal of this project is to build a batch data ingestion system for environmental sensor data. The system includes data cleaning, transformation, and storage into a 
 PostgreSQL database using Docker to ensure portability and reproducibility.
 
-## Data Source
-
-* Dataset: Air Quality Data in India  
-* Source: [Kaggle – Air Quality Data](https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india)  
-* Description: The dataset includes hourly and daily air pollution measurements collected from various Indian cities. Parameters include PM2.5, PM10, NOx, SO2, O3, and AQI.
-
 ## Setup and Installation
 
 1. Clone the repository:
@@ -42,8 +36,8 @@ PostgreSQL database using Docker to ensure portability and reproducibility.
 ```mermaid
 graph LR
     A[(  **Select Dataset**<br/>Raw CSV files  )] --> B[(  **Clean Data**<br/>clean_data.py  )]
-    B --> C[(  **Design Schema**<br/>recreate_table.py<br/>schema.sql  )]
-    C --> D[(  **Insert to DB**<br/>batch_insert.py  )]
+    B --> C[(  **Setup Database**<br/>recreate_table.py<br/>schema.sql  )]
+    C --> D[(  **Insert Batch**<br/>batch_insert.py  )]
     D --> E[(  **Validate Ingestion**<br/>Run SQL query  )]
     E --> F[(  **Containerization**<br/>docker-compose.yml<br/>Dockerfile  )]
     F --> G[(  **Document Project**<br/>#<br/>README.md  )]
@@ -60,7 +54,13 @@ graph LR
 
 ## Process Description
 
-### 1. Data Cleaning
+### 1. Dataset
+
+* Dataset: Air Quality Data in India  
+* Source: [Kaggle – Air Quality Data](https://www.kaggle.com/datasets/rohanrao/air-quality-data-in-india)  
+* Description: The dataset includes hourly and daily air pollution measurements collected from various Indian cities. Parameters include PM2.5, PM10, NOx, SO2, O3, and AQI.
+
+### 2. Data Cleaning
 
 * `clean_data.py` processes `station_hour.csv`:
   - Normalizes column names
@@ -69,21 +69,32 @@ graph LR
   - Adds metadata (source and ingestion timestamp)
   - Saves output as `air_quality_cleaned.csv`
 
-### 2. Database Setup
+### 3. Database Setup
 
 * `recreate_table.py` connects to PostgreSQL and recreates the `air_quality` table with the proper schema
 * `schema.sql` provides the same structure in raw SQL format
 
-### 3. Batch Insertion
+### 4. Batch Insertion
 
 * `batch_insert.py` loads cleaned data and inserts it into PostgreSQL in chunks
 * Connection uses SQLAlchemy
 * Batch size: 10,000 rows
 
-### 4. Validation
+### 5. Ingestion Validation
 
 * `test_connection.py` verifies database credentials and connection
 * A `SELECT COUNT(*)` query confirms that the records were successfully ingested
+
+### 6. Containerization
+
+* PostgreSQL is run in a Docker container using `docker-compose.yml` 
+* Ensures consistent local setup and easy deployment
+* No manual database installation required
+
+### 7. Documentatation
+
+* in code and `README.md`
+---
 
 ## Project Structure
 
