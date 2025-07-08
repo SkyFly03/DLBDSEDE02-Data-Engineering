@@ -5,7 +5,7 @@
 ## Objective
 
 The goal of this project is to build a batch data ingestion system for environmental sensor data. The system includes data cleaning, transformation, and storage into a 
-PostgreSQL database using Docker to ensure portability and reproducibility.
+PostgreSQL database using Docker for portability and reproducibility.
 
 ## Setup and Installation
 
