@@ -92,20 +92,21 @@ DLBDSEDE02-Data-Engineering/
 ├── data/
 │   └── (large .csv files excluded from repo)
 ├── images/
-│   ├── docker_ps.png
-│   ├── insert_output.png
-│   └── count_rows.png
+│   ├── insert_output.png (2)
+│   ├── count_rows.png
+│   └── docker_ps.png
 ├── scripts/
+│   ├── batch_insert.py 
+│   ├── check_columns.py 
 │   ├── clean_data.py
 │   ├── recreate_table.py
-│   ├── batch_insert.py
-│   ├── check_columns.py
 │   └── test_connection.py
-├── schema.sql
+├── .gitignore 
 ├── Dockerfile
+├── README.md
 ├── docker-compose.yml
 ├── requirements.txt
-└── .gitignore
+└── schema.sql
 ```
 
 ## Project Summary
