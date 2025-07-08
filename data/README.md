@@ -41,20 +41,23 @@ PostgreSQL database using Docker to ensure portability and reproducibility.
 
 ```mermaid
 graph LR
-    A[  Raw CSV Files  ] --> B[  clean_data.py  ]
-    B --> C[  air_quality_cleaned.csv  ]
-    C --> D[  batch_insert.py  ]
-    D --> E[(  PostgreSQL via Docker  )]
-    E --> F["  SELECT COUNT(*) to verify  "]
+    A[(  **Select Dataset**<br/>Raw CSV files  )] --> B[(  **Clean Data**<br/>clean_data.py  )]
+    B --> C[(  **Design Schema**<br/>recreate_table.py<br/>schema.sql  )]
+    C --> D[(  **Insert to DB**<br/>batch_insert.py  )]
+    D --> E[(  **Validate Ingestion**<br/>Run SQL query  )]
+    E --> F[(  **Containerization**<br/>docker-compose.yml<br/>Dockerfile  )]
+    F --> G[(  **Document Project**<br/>#<br/>README.md  )]
 
-    %% Node colors and font size for bigger boxes
+    %% Node colors and font size
     style A fill:#fff9b1,stroke:#eec900,stroke-width:4px,font-size:24px
     style B fill:#ffe0a3,stroke:#ffb347,stroke-width:4px,font-size:24px
     style C fill:#ffbfa3,stroke:#ff7f50,stroke-width:4px,font-size:24px
     style D fill:#ffb1c1,stroke:#ff4f81,stroke-width:4px,font-size:24px
     style E fill:#e1b1ff,stroke:#b266ff,stroke-width:4px,font-size:24px
     style F fill:#b1c7ff,stroke:#668cff,stroke-width:4px,font-size:24px
+    style G fill:#6a9ce6,stroke:#2f5aa8,stroke-width:4px,font-size:24px
 ```
+
 ## Process Description
 
 ### 1. Data Cleaning
