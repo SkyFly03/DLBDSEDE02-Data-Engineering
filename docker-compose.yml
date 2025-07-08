@@ -1,16 +1,14 @@
-version: '3.8'
-
 services:
-  postgres:
+  postgres:  # PostgreSQL container for batch ingestion
     image: postgres:14
     container_name: local_postgres
     restart: always
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=david
-      - POSTGRES_PASSWORD=david123
-      - POSTGRES_DB=sensordb
+      - POSTGRES_USER=your_username  # masked for GitHub
+      - POSTGRES_PASSWORD=your_password
+      - POSTGRES_DB=your_database
     volumes:
       - pgdata:/var/lib/postgresql/data
 
