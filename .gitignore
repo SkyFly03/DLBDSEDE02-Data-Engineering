@@ -7,3 +7,9 @@ venv/
 .DS_Store
 Thumbs.db
 kaggle.json
+
+# Exclude large CSVs from version control
+
+data/air_quality_cleaned.csv
+data/station_hour.csv
+data/city_hour.csv
