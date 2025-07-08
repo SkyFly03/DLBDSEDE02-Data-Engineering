@@ -1,3 +1,11 @@
+# Script: clean_data.py
+# Purpose: Cleans the raw station_hour.csv dataset by:
+# - normalizing column names
+# - converting date formats
+# - dropping rows with missing PM2.5 and PM10 values
+# - adding ingestion metadata
+# - exporting cleaned data as air_quality_cleaned.csv
+
 import pandas as pd
 
 # Load raw CSV
