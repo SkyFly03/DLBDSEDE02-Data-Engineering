@@ -8,12 +8,12 @@ from sqlalchemy import create_engine
 df = pd.read_csv("data/air_quality_cleaned.csv")
 
 # Connect to PostgreSQL
-# Real credentials used for local execution only (remove before uploading to GitHub)
-USER     = "david"
-PASSWORD = "david123"
+# Real credentials are intentionally masked for security in public repositories
+USER     = "your_username"
+PASSWORD = "your_password"
 HOST     = "localhost"
 PORT     = 5432
-DBNAME   = "sensordb"
+DBNAME   = "your_database"
 
 database_url = f"postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}"
 engine = create_engine(database_url)
