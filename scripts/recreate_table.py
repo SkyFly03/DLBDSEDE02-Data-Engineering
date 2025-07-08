@@ -1,6 +1,13 @@
+# Script: recreate_table.py
+# Purpose: Drops and recreates the air_quality table in PostgreSQL
+# - Connects to the database
+# - Defines table schema with appropriate data types
+# - Ensures a clean and consistent structure for batch insertion
+
 from sqlalchemy import create_engine, text
 
-engine = create_engine("postgresql://david:david123@localhost:5432/sensordb")
+# Real credentials are masked for security
+engine = create_engine("postgresql://your_username:your_password@localhost:5432/your_database")
 
 with engine.begin() as conn:  # <-- note: begin() instead of connect()
     conn.execute(text("DROP TABLE IF EXISTS air_quality"))
