@@ -125,13 +125,4 @@ DLBDSEDE02-Data-Engineering/
 ├── requirements.txt
 └── schema.sql
 ```
-
-## Project Summary
-
-- Identified PostgreSQL as a scalable, reliable, and cloud-ready database solution
-- Used Docker for portability
-- Selected a dataset with extensible structure to support future sensor types 
-
-- Built a local batch data ingestion pipeline using Python and Docker
-- Implemented modular scripts for cleaning, table creation, and data insertion
-- Validated ingestion process with screenshots and row count checks
+---
