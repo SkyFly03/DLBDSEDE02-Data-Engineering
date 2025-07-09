@@ -76,10 +76,11 @@ graph LR
 
 ### 4. Batch Insertion
 
-![image](https://github.com/user-attachments/assets/1ad436fc-dc32-49db-b9d3-95a7ec308355)
+ ![image](https://github.com/user-attachments/assets/1ad436fc-dc32-49db-b9d3-95a7ec308355)
 * `batch_insert.py` loads cleaned data and inserts it into PostgreSQL in chunks
 * Connection uses SQLAlchemy
 * Batch size: 10,000 rows
+ 
 
 ### 5. Ingestion Validation
 
@@ -91,9 +92,10 @@ graph LR
 ### 6. Containerization
 
   ![docker_ps](https://github.com/user-attachments/assets/57fe8020-e05f-489b-aa78-9d1fafe8df37)
-* PostgreSQL is run in a Docker container using `docker-compose.yml`
-* Ensures consistent local setup and easy deployment
-* No manual database installation required
+* PostgreSQL runs in a Docker container via `docker-compose.yml`
+* Consistent setup across systems without manual installation  
+* Deployment supported to cloud platforms and horizontal scaling with tools like Kubernetes
+* Flexible structure for future extensions as streaming or microservices
 
 ### 7. Documentatation
 
