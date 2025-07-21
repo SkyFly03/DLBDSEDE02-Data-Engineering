@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, text
 # Real credentials are masked for security
 engine = create_engine("postgresql://your_username:your_password@localhost:5432/your_database")
 
-with engine.begin() as conn:  # <-- note: begin() instead of connect()
+with engine.begin() as conn: 
     conn.execute(text("DROP TABLE IF EXISTS air_quality"))
 
     conn.execute(text("""
