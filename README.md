@@ -1,13 +1,22 @@
 # DLBDSEDE02 - Data Engineering Project 
 ## Task 1: Choose a suitable database and store the data in batches ![image](https://github.com/user-attachments/assets/3aff3d58-18b9-45d9-8f60-27e15c71a301) 
 
+## Situation
 
-## Objective
+A municipality is collecting environmental data from distributed sensors and plans to expand measurements (e.g., CO₂, noise) in the future. The system must handle structured data batches, adapt to new sensor types, and support scalable deployment across local and cloud environments. 
 
-The goal of this project is to build a batch data ingestion system for environmental sensor data. The system includes data cleaning, transformation, and storage into a 
-PostgreSQL database using Docker for portability and reproducibility.
+## Requirements & Technical Solutions
 
-## Setup and Installation
+| Project Requirement                                                    | Technical Need                                        | Implemented Solution                                     |
+|------------------------------------------------------------------------|--------------------------------------------------------|----------------------------------|
+| Store large volumes of sensor data in batches                         | Structured, repeatable ingestion                      | **SQLAlchemy** – Manages schema creation and batch inserts via Python |
+| Support additional sensor types in the future                         | Flexible, schema-adaptable storage                    | **PostgreSQL** – Relational DB with schema control and indexing       |
+| Ensure the system works locally and in the cloud                      | Environment-independent deployment                    | **Docker** – Provides consistent runtime across platforms              |
+| Minimize setup effort for all components                              | Automated service orchestration                       | **Docker Compose** – Starts database and scripts in one command        |
+| Enable long-term scalability and easy maintenance                     | Modular, portable, open-source architecture           | **Open-source stack** – Easy to extend, version, and manage            |
+
+
+## Technical Setup
 
 1. Clone the repository:
    ```
@@ -34,7 +43,19 @@ PostgreSQL database using Docker for portability and reproducibility.
 ## Workflow Overview
 <img width="2138" height="342" alt="image" src="https://github.com/user-attachments/assets/cdffdb0a-8790-44e7-bf4a-c34196ef38ea" />
 
+## Technical Justification
 
+- **Docker**: Provides consistent, isolated environments. Ensures the system runs identically on any machine or platform.
+- **Docker Compose**: Orchestrates services (PostgreSQL + scripts) with one command. Manages networking and execution automatically.
+- **PostgreSQL**: A relational database ideal for time-series sensor data. Supports indexing, structured queries, and future schema extension.
+- **SQLAlchemy**: Handles table creation and batch inserts in reusable Python code. Enables schema control and maintainability.
+
+## Rejected Alternatives
+
+- **NoSQL databases** (e.g., MongoDB): Not suitable for structured sensor data that requires relational queries and schema enforcement.
+- **MongoDB**: Does not offer full ACID compliance or efficient multi-dimensional indexing needed for scalable, time-based storage.
+
+---
 ## Process Description
 
 ### 1. Dataset
@@ -61,12 +82,10 @@ PostgreSQL database using Docker for portability and reproducibility.
 
  ![image](https://github.com/user-attachments/assets/1ad436fc-dc32-49db-b9d3-95a7ec308355)
 * `batch_insert.py` loads cleaned data and inserts it into PostgreSQL in chunks
-* Connection uses SQLAlchemy
+* SQLAlchemy handles the database connection and insertion logic in Python
 * Batch size: 10,000 rows
- 
 
 ### 5. Ingestion Validation
-
 
 ![image](https://github.com/user-attachments/assets/d321e1e4-ce14-4cb6-aae7-3e55a54768a0)
 * `test_connection.py` verifies database credentials and connection
@@ -76,9 +95,9 @@ PostgreSQL database using Docker for portability and reproducibility.
 
   ![docker_ps](https://github.com/user-attachments/assets/57fe8020-e05f-489b-aa78-9d1fafe8df37)
 * PostgreSQL runs in a Docker container via `docker-compose.yml`
-* Consistent setup across systems without manual installation  
-* Deployment supported to cloud platforms and horizontal scaling with tools like Kubernetes
-* Flexible structure for future extensions as streaming or microservices
+* Containers can be started, stopped, or replaced independently  
+* The system can be run on any machine or deployed in cloud environments
+* All components are version-controlled for reproducibility and easy migration
 
 ### 7. Documentatation
 
@@ -109,3 +128,7 @@ DLBDSEDE02-Data-Engineering/
 └── schema.sql
 ```
 ---
+
+## Conclusion
+
+This system demonstrates how a containerized, Python-driven ETL pipeline can efficiently store structured environmental data in batches. By combining PostgreSQL, Docker, and SQLAlchemy, the solution remains scalable, portable, and ready for future sensor expansion with minimal reconfiguration.
