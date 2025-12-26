@@ -1,3 +1,16 @@
+## ▸ Project Overview
+- **Batch ingestion pipeline:** containerized Python workflow for environmental sensor data  
+- **Database integration:** PostgreSQL with structured schema management  
+- **Reproducible execution:** Docker-based setup for consistent runs  
+
+## ▸ Why this project matters
+- **Core data engineering principles:** batch ingestion, validation, persistence  
+- **Analytics-ready design:** structured data storage for downstream use  
+- **Scalable foundation:** ETL-style pipeline aligned with real-world practice  
+
+---
+---
+
 # DLBDSEDE02 – Data Engineering Project  
 ## Task 1: Batch Storage System for Environmental Sensor Data
 
@@ -25,6 +38,7 @@ This system was built to store growing sensor data in a way that is scalable, ma
 ---
 
 ## Technical Setup
+Follow these steps to bootstrap and run the batch ingestion pipeline locally.
 
 1. Clone the repository:
    ```
@@ -91,10 +105,10 @@ This system was built to store growing sensor data in a way that is scalable, ma
   ![docker_ps](https://github.com/user-attachments/assets/57fe8020-e05f-489b-aa78-9d1fafe8df37)
 * Runs PostgreSQL and Python scripts in separate containers
 * `docker-compose.yml` defines both services and manages networking between them
-* The full system is launched with one command: `docker-compose up`
+* The full system is launched with one command: `docker-compose up -d`
 * System can be deployed consistently on any machine or cloud
 
-### 7. Documentatation
+### 7. Documentation
 
 * All code, schema, and setup files are version-controlled in GitHub
 * System usage is explained in this `README.md`
@@ -124,6 +138,11 @@ DLBDSEDE02-Data-Engineering/
 └── schema.sql
 ```
 ---
+## Results & Key Outputs
+See the `images/` folder for visual confirmation.
+- Tables created in PostgreSQL with ingested environmental sensor records
+- Batch insert performance screenshot
+- Connection and validation checks passing
 
 ## Conclusion
 
