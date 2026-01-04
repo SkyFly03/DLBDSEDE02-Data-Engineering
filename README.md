@@ -1,12 +1,17 @@
 ## ▸ Project Overview
-- **Batch ingestion pipeline:** containerized Python workflow for environmental sensor data  
-- **Database integration:** PostgreSQL with structured schema management  
-- **Reproducible execution:** Docker-based setup for consistent runs  
+- **Batch ingestion pipeline:** chunked loading of environmental sensor data  
+- **Persistent storage:** relational schema in PostgreSQL  
+- **Reproducible execution:** containerized setup with Docker Compose
 
-## ▸ Why this project matters
-- **Core data engineering principles:** batch ingestion, validation, persistence  
-- **Analytics-ready design:** structured data storage for downstream use  
-- **Scalable foundation:** ETL-style pipeline aligned with real-world practice  
+## ▸ Tech Stack
+- **Language:** Python  
+- **Data handling:** Pandas, SQLAlchemy  
+- **Database:** PostgreSQL  
+- **Infra:** Docker, Docker Compose
+
+## ▸ Project Context
+- **Academic origin:** university project  
+- **Design goal:** practical ETL-style pipeline reflecting real data engineering workflows
 
 ---
 ---
